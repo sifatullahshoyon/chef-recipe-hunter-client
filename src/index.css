@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 
-:root{
-  font-family: 'Helvetica Neue', sans-serif;                                              
+.active{
+  @apply font-neue text-blue-600 font-bold uppercase tracking-wide duration-200 text-lg
+}
+
+.default{
+  @apply font-neue text-white uppercase font-medium tracking-wide duration-200 text-lg
+}
+
+.text-tertiary:hover{
+  background-color: #84100F;
 }

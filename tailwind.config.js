@@ -10,7 +10,7 @@ export default {
         'neue': ['Helvetica Neue' , 'sans-serif'],
       },
       color: {
-        'red-merun': '#84100F',
+        'tertiary': '#84100F',
       },
     },
   },
