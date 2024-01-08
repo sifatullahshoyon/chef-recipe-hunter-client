@@ -20,7 +20,7 @@ const Services = () => {
         </p>
         <div className="md:flex justify-around mt-10">
           <div className="text-center mb-2">
-            <div className="bg-white  rounded-full p-5 flex justify-center items-center">
+            <div className="bg-white shadow-lg rounded-full p-5 flex justify-center items-center">
               <MdBrunchDining className=" text-9xl p-2  text-brown" />
             </div>
             <p className="mt-14">
@@ -30,7 +30,7 @@ const Services = () => {
             </p>
           </div>
           <div className="text-center mb-2">
-            <div className="bg-white  rounded-full p-5 flex justify-center items-center">
+            <div className="bg-white shadow-lg rounded-full p-5 flex justify-center items-center">
               <GiPartyPopper className=" text-9xl p-2  text-brown" />
             </div>
             <p className="mt-14">
@@ -40,7 +40,7 @@ const Services = () => {
             </p>
           </div>
           <div className="text-center">
-            <div className="bg-white  rounded-full p-5 flex justify-center items-center">
+            <div className="bg-white shadow-lg rounded-full p-5 flex justify-center items-center">
               <FaAmbulance className=" text-9xl p-2  text-brown" />
             </div>
             <p className="mt-14">
