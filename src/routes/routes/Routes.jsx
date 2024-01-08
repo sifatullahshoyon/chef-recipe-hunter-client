@@ -4,6 +4,7 @@ import ErrorPage from "../../pages/ErrorPage/ErrorPage";
 import Home from "../../pages/Home/Home";
 import Services from "../../pages/Services/Services";
 import Chefes from "../../pages/Chefes/Chefes";
+import History from "../../pages/History/History";
 
 
 const router = createBrowserRouter([
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
             {
                 path: '/chefes',
                 element: <Chefes />,
+            },
+            {
+                path: '/history',
+                element: <History />,
             },
         ]
     },
