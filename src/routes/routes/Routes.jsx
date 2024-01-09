@@ -5,6 +5,9 @@ import Home from "../../pages/Home/Home";
 import Services from "../../pages/Services/Services";
 import Chefes from "../../pages/Chefes/Chefes";
 import History from "../../pages/History/History";
+import AccountCreate from "../../layout/AccountCreate";
+import Registration from "../../components/shared/Registration/Registration";
+import Login from "../../components/shared/Login/Login";
 
 
 const router = createBrowserRouter([
@@ -32,6 +35,21 @@ const router = createBrowserRouter([
             },
         ]
     },
+    {
+        path: '/',
+        element: <AccountCreate />,
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: '/registration',
+                element: <Registration />
+            },
+            {
+                path: '/login',
+                element: <Login />
+            }
+        ]
+    }
 ]);
 
 

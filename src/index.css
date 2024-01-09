@@ -18,3 +18,9 @@
 .text-brown{
   color: #84100F;
 }
+
+input{
+  background-color: white;
+  border-bottom: 1px solid black;
+  outline: none;
+}
