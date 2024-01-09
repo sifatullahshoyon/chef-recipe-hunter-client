@@ -24,3 +24,18 @@ input{
   border-bottom: 1px solid black;
   outline: none;
 }
+
+.input-container {
+  position: relative;
+}
+
+
+.icon{
+  color: black;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+}
+
+

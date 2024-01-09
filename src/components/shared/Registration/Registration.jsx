@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { FaRegEyeSlash } from "react-icons/fa6";
+import { IoEyeSharp } from "react-icons/io5";
 
 const Registration = () => {
-    const handleRegistration = () => {
-        console.log('ok');
+    const [showPassword , setShowPassword] = useState(false);
+    const [showConfirmPassword , setShowConfirmPassword] = useState(false);
+    const handleRegistration = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const confirm = form.confirm.value;
+
+        console.log(name , email , password , confirm);
+
+        
     };
+
+    // const showPassword = () => {
+    //     setPassword(!password);
+    // };
   return (
     <div className="bg-white">
       <div className="container mx-auto  min-h-screen w-full">
@@ -24,7 +41,7 @@ const Registration = () => {
                 <input
                   type="text"
                   placeholder="Enter Your Name"
-                  name="email"
+                  name="name"
                   className="p-2 text-black"
                 />
               </div>
@@ -48,25 +65,35 @@ const Registration = () => {
                     Password
                   </span>
                 </label>
+                <div className="form-control input-container">
                 <input
-                  type="password"
-                  placeholder="password"
+                  type='password'
+                  placeholder="Password"
                   name="password"
                   className="p-2 text-black"
                   required
                 />
+                <div onClick={() => setShowPassword(!showPassword)}>
+                    {showPassword ? (<IoEyeSharp className="icon" />) : (<FaRegEyeSlash className="icon" />)}
+                </div>
+                </div>
                 <label className="label">
                   <span className="label-text text-black text-lg font-neue tracking-wide">
                     Confirm Password
                   </span>
                 </label>
+                <div className="form-control input-container">
                 <input
                   type="password"
-                  placeholder="password"
+                  placeholder="Confirm Password"
                   name="confirm"
                   className="p-2 text-black"
                   required
                 />
+                <div onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+                    {showConfirmPassword ? (<IoEyeSharp className="icon" />) : (<FaRegEyeSlash className="icon" />)}
+                </div>
+                </div>
                 <label className="label">
                   <a
                     href="#"
