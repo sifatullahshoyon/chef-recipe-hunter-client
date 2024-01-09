@@ -17,10 +17,12 @@ const Registration = () => {
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
+    const photo = form.photo.value;
     const password = form.password.value;
     const confirm = form.confirm.value;
 
-    console.log(name, email, password, confirm);
+    console.log(name, email, password, confirm , photo);
+    
     // Password Validation
     if(password !== confirm){
         toast.error("The password doesn't Match");
@@ -36,6 +38,9 @@ const Registration = () => {
         return;
     }else if(!/(.{8,})/.test(password)){
         toast.error("Password Must Be 8 character");
+        return;
+    }else if(!/(^\S+@\S+\.\S+$)/.test(email)){
+        toast.error("Please provide a valid email address");
         return;
     }
 
@@ -80,10 +85,23 @@ const Registration = () => {
                 </label>
                 <input
                   type="email"
-                  placeholder="Email"
+                  placeholder="exaple@gmail.com"
                   name="email"
                   className="p-2 text-black"
                   required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-black text-lg font-neue tracking-wide">
+                    Photo URL
+                  </span>
+                </label>
+                <input
+                  type="url"
+                  placeholder="Upload Your Photo"
+                  name="photo"
+                  className="p-2 text-black"
                 />
               </div>
               <div className="form-control">

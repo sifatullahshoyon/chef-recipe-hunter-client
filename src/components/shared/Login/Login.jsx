@@ -4,28 +4,38 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { IoEyeSharp } from "react-icons/io5";
 import { AuthContext } from "../../../context/AuthProviders";
-import { Result } from "postcss";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const {signIn} = useContext(AuthContext);
+  const { signIn, resetPassword } = useContext(AuthContext);
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email , password);
+    console.log(email, password);
 
-
-    signIn(email , password)
-    .then((result) => {
+    signIn(email, password)
+      .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-     })
-     .catch((error) => {
+      })
+      .catch((error) => {
         console.error(error.message);
-     });
+      });
+  };
 
+  const handleResetPassword  = (e) => {
+    console.log(e.target)
+    resetPassword(e.target.email.value)
+      .then((result) => {
+        console.log(result)
+        toast("Password reset email sent!");
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
   };
   return (
     <div className="bg-white">
@@ -76,6 +86,7 @@ const Login = () => {
                   <a
                     href="#"
                     className="label-text-alt link link-hover text-brown hover:text-brown font-neue"
+                    onClick={handleResetPassword}
                   >
                     Forgot password?
                   </a>
