@@ -1,17 +1,31 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { IoEyeSharp } from "react-icons/io5";
+import { AuthContext } from "../../../context/AuthProviders";
+import { Result } from "postcss";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const {signIn} = useContext(AuthContext);
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email , password);
+
+
+    signIn(email , password)
+    .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+     })
+     .catch((error) => {
+        console.error(error.message);
+     });
+
   };
   return (
     <div className="bg-white">

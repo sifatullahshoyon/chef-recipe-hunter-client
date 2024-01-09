@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { IoEyeSharp } from "react-icons/io5";
+import { AuthContext } from "../../../context/AuthProviders";
+import toast from 'react-hot-toast';
 
 const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const {createUser} = useContext(AuthContext);
+
   const handleRegistration = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -16,6 +21,33 @@ const Registration = () => {
     const confirm = form.confirm.value;
 
     console.log(name, email, password, confirm);
+    // Password Validation
+    if(password !== confirm){
+        toast.error("The password doesn't Match");
+        return;
+    }else if(!/(?=.*?[A-Z])/.test(password)){
+        toast.error("Please provide at least one upper-case letter");
+        return;
+    }else if(!/(?=.*?[a-z])/.test(password)){
+        toast.error("Please provide at least one lower-case letter");
+        return;
+    }else if(!/(?=.*?[0-9])/.test(password)){
+        toast.error("Please provide at least one digit");
+        return;
+    }else if(!/(.{8,})/.test(password)){
+        toast.error("Password Must Be 8 character");
+        return;
+    }
+
+    createUser(email , password)
+    .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+    })
+    .catch((error) => {
+        console.error(error.message);
+    })
+
   };
 
   return (
