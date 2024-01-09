@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { FaRegEyeSlash } from "react-icons/fa6";
+import { IoEyeSharp } from "react-icons/io5";
 
 const Login = () => {
-    const handleLogin = () => {
-        console.log('okkk');
-    };
+  const [showPassword, setShowPassword] = useState(false);
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email , password);
+  };
   return (
     <div className="bg-white">
       <div className="container mx-auto  min-h-screen w-full">
@@ -35,13 +42,22 @@ const Login = () => {
                     Password
                   </span>
                 </label>
-                <input
-                  type="password"
-                  placeholder="password"
-                  name="password"
-                  className="p-2 text-black"
-                  required
-                />
+                <div className="form-control input-container">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="password"
+                    name="password"
+                    className="p-2 text-black"
+                    required
+                  />
+                  <div onClick={() => setShowPassword(!showPassword)}>
+                    {showPassword ? (
+                      <IoEyeSharp className="icon" />
+                    ) : (
+                      <FaRegEyeSlash className="icon" />
+                    )}
+                  </div>
+                </div>
                 <label className="label">
                   <a
                     href="#"
