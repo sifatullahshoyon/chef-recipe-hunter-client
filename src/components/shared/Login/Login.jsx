@@ -16,19 +16,26 @@ const Login = () => {
     const password = form.password.value;
     console.log(email, password);
 
+    if(password === ' '){
+        return toast.error('please provide a valid password');
+    }
+
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        toast.success('Login successfully')
       })
       .catch((error) => {
-        console.error(error.message);
+        toast.error(error.message);
       });
   };
 
-  const handleResetPassword  = (e) => {
-    console.log(e.target)
-    resetPassword(e.target.email.value)
+  const handleResetPassword = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    resetPassword(email)
       .then((result) => {
         console.log(result)
         toast("Password reset email sent!");

@@ -22,7 +22,7 @@ const Registration = () => {
     const confirm = form.confirm.value;
 
     console.log(name, email, password, confirm , photo);
-    
+
     // Password Validation
     if(password !== confirm){
         toast.error("The password doesn't Match");
@@ -48,6 +48,7 @@ const Registration = () => {
     .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        toast.success('user create successfully')
     })
     .catch((error) => {
         console.error(error.message);
