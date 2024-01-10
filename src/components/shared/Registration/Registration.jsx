@@ -116,8 +116,8 @@ const Registration = () => {
                   </span>
                 </label>
                 <input
-                  type="file"
-                  placeholder="Upload Your Photo"
+                  type="url"
+                  placeholder="Upload Your Photo url"
                   name="photo"
                   className="p-2 text-black"
                 />

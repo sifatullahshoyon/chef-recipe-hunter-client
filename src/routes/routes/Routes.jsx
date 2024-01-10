@@ -8,6 +8,7 @@ import History from "../../pages/History/History";
 import AccountCreate from "../../layout/AccountCreate";
 import Registration from "../../components/shared/Registration/Registration";
 import Login from "../../components/shared/Login/Login";
+import SingleChefData from "../../pages/SingleChefData/SingleChefData";
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
             {
                 path: '/chefes',
                 element: <Chefes />,
+            },
+            {
+                path: '/chefes/:id',
+                element: <SingleChefData />,
+                loader: ({params}) => fetch(`http://localhost:5000/chefs/${params.id}`)
             },
             {
                 path: '/history',

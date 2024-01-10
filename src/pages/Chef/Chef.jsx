@@ -1,5 +1,6 @@
 import React from "react";
 import { FcLike } from "react-icons/fc";
+import { Link } from "react-router-dom";
 
 const Chef = ({ chef }) => {
   const {
@@ -40,7 +41,7 @@ const Chef = ({ chef }) => {
             </span>
           </div>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">View Recipes</button>
+            <Link to={`/chefes/${id}`}><button className="btn btn-primary">View Recipes</button></Link>
           </div>
         </div>
       </div>
