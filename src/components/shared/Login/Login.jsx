@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { signIn, resetPassword } = useContext(AuthContext);
+  const { signIn, resetPassword , googleLogin } = useContext(AuthContext);
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -25,6 +25,7 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         toast.success('Login successfully')
+        form.reset();
       })
       .catch((error) => {
         toast.error(error.message);
@@ -43,6 +44,14 @@ const Login = () => {
       .catch((error) => {
         console.error(error.message);
       });
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+    .then((result) => result.user)
+    .catch((error) => {
+        console.error(error.message)
+    })
   };
   return (
     <div className="bg-white">
@@ -116,7 +125,7 @@ const Login = () => {
                 <hr className="w-2/5" />
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary bg-transparent hover:bg-transparent  text-brown">
+                <button onClick={handleGoogleLogin } className="btn btn-primary bg-transparent hover:bg-transparent  text-brown">
                   <FaGoogle /> Google
                 </button>
               </div>

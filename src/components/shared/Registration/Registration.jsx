@@ -48,10 +48,11 @@ const Registration = () => {
     .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        toast.success('user create successfully')
+        toast.success('user create successfully');
+        form.reset();
     })
     .catch((error) => {
-        console.error(error.message);
+        toast.error(error.message);
     })
 
   };
