@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { signIn, resetPassword , googleLogin } = useContext(AuthContext);
+  const { signIn, resetPassword , googleLogin , githubLogin } = useContext(AuthContext);
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -48,6 +48,14 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     googleLogin()
+    .then((result) => result.user)
+    .catch((error) => {
+        console.error(error.message)
+    })
+  };
+
+  const handleGithubLogin = () => {
+    githubLogin()
     .then((result) => result.user)
     .catch((error) => {
         console.error(error.message)
@@ -130,7 +138,7 @@ const Login = () => {
                 </button>
               </div>
               <div className="form-control mt-2">
-                <button className="btn btn-primary bg-transparent hover:bg-transparent border-black text-brown">
+                <button onClick={handleGithubLogin} className="btn btn-primary bg-transparent hover:bg-transparent border-black text-brown">
                   <FaGithub /> Github
                 </button>
               </div>

@@ -10,7 +10,7 @@ const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const {createUser} = useContext(AuthContext);
+  const {createUser , googleLogin , githubLogin} = useContext(AuthContext);
 
   const handleRegistration = (event) => {
     event.preventDefault();
@@ -55,6 +55,22 @@ const Registration = () => {
         toast.error(error.message);
     })
 
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+    .then((result) => result.user)
+    .catch((error) => {
+        console.error(error.message)
+    })
+  };
+
+  const handleGithubLogin = () => {
+    githubLogin()
+    .then((result) => result.user)
+    .catch((error) => {
+        console.error(error.message)
+    })
   };
 
   return (
@@ -177,12 +193,12 @@ const Registration = () => {
                 <hr className="w-2/5" />
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary bg-transparent hover:bg-transparent  text-brown">
+                <button onClick={handleGoogleLogin } className="btn btn-primary bg-transparent hover:bg-transparent  text-brown">
                   <FaGoogle /> Google
                 </button>
               </div>
               <div className="form-control mt-2">
-                <button className="btn btn-primary bg-transparent hover:bg-transparent border-black text-brown">
+                <button onClick={handleGithubLogin} className="btn btn-primary bg-transparent hover:bg-transparent border-black text-brown">
                   <FaGithub /> Github
                 </button>
               </div>
