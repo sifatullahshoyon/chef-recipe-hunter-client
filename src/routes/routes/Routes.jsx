@@ -22,7 +22,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />,
-                loader: () => fetch('http://localhost:5000/chefs')
+                loader: () => fetch('https://chef-recipe-hunter-server-sepia.vercel.app/chefs')
             },
             {
                 path: '/services',
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
             {
                 path: '/chefes/:id',
                 element: <PrivateRoute><SingleChefData /></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/chefs/${params.id}`)
+                loader: ({params}) => fetch(`https://chef-recipe-hunter-server-sepia.vercel.app/chefs/${params.id}`)
             },
             {
                 path: '/history',
