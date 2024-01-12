@@ -1,12 +1,17 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigation } from "react-router-dom";
 import Table from "../../components/Table/Table";
 import { FcLike } from "react-icons/fc";
 import ReactStarsRating from "react-awesome-stars-rating";
 import toast from "react-hot-toast";
+import Loading from "../../components/Loading/Loading";
 
 const SingleChefData = () => {
   const data = useLoaderData();
+  const {state} = useNavigation();
+  if(state === 'loading'){
+    return <Loading />;
+  }
   const [disable, setDisable] = useState(false);
   const {
     chefName,

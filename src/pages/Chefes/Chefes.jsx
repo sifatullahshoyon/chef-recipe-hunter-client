@@ -1,10 +1,14 @@
-import React, { useEffect } from "react";
-import { useLoaderData } from "react-router-dom";
+import React from "react";
+import { useLoaderData, useNavigation } from "react-router-dom";
 import Chef from "../Chef/Chef";
+import Loading from "../../components/Loading/Loading";
 
 const Chefes = () => {
   const chefsData = useLoaderData();
-
+  const {state} = useNavigation();
+  if(state === 'loading'){
+    return <Loading />;
+  }
   return (
     <div className="bg-white">
       <div className="container mx-auto py-32 px-5">
