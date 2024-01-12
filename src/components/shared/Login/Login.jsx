@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { IoEyeSharp } from "react-icons/io5";
@@ -8,24 +8,30 @@ import toast from "react-hot-toast";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { signIn, resetPassword , googleLogin , githubLogin } = useContext(AuthContext);
+  const { signIn, resetPassword, googleLogin, githubLogin } =
+    useContext(AuthContext);
+  const navigate = useNavigate();
+  let location = useLocation();
+
+  let from = location?.state?.from?.pathname || "/";
+
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    // console.log(email, password);
 
-    if(password === ' '){
-        return toast.error('please provide a valid password');
+    if (password === " ") {
+      return toast.error("please provide a valid password");
     }
 
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        toast.success('Login successfully')
+        toast.success("Login successfully");
         form.reset();
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         toast.error(error.message);
@@ -38,7 +44,7 @@ const Login = () => {
     const email = form.email.value;
     resetPassword(email)
       .then((result) => {
-        console.log(result)
+        console.log(result);
         toast("Password reset email sent!");
       })
       .catch((error) => {
@@ -48,18 +54,18 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     googleLogin()
-    .then((result) => result.user)
-    .catch((error) => {
-        console.error(error.message)
-    })
+      .then((result) => result.user)
+      .catch((error) => {
+        console.error(error.message);
+      });
   };
 
   const handleGithubLogin = () => {
     githubLogin()
-    .then((result) => result.user)
-    .catch((error) => {
-        console.error(error.message)
-    })
+      .then((result) => result.user)
+      .catch((error) => {
+        console.error(error.message);
+      });
   };
   return (
     <div className="bg-white">
@@ -133,12 +139,18 @@ const Login = () => {
                 <hr className="w-2/5" />
               </div>
               <div className="form-control mt-6">
-                <button onClick={handleGoogleLogin } className="btn btn-primary bg-transparent hover:bg-transparent  text-brown">
+                <button
+                  onClick={handleGoogleLogin}
+                  className="btn btn-primary bg-transparent hover:bg-transparent  text-brown"
+                >
                   <FaGoogle /> Google
                 </button>
               </div>
               <div className="form-control mt-2">
-                <button onClick={handleGithubLogin} className="btn btn-primary bg-transparent hover:bg-transparent border-black text-brown">
+                <button
+                  onClick={handleGithubLogin}
+                  className="btn btn-primary bg-transparent hover:bg-transparent border-black text-brown"
+                >
                   <FaGithub /> Github
                 </button>
               </div>

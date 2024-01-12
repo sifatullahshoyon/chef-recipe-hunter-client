@@ -3,12 +3,12 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProviders";
 
 const Navbar = () => {
-  const {user , logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const handleLogout = () => {
     logOut()
-    .then(() => {})
-    .catch((error) => console.error(error.message))
+      .then(() => {})
+      .catch((error) => console.error(error.message));
   };
 
   return (
@@ -137,20 +137,25 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <div className="flex justify-center items-center gap-4">
-          {
-            user && (
+            {user && (
               <div className="avatar">
-            <div className="w-12 rounded-full">
-              <img src={user.photoURL ? user.photoURL : <span>U</span>} title={user.displayName}  />
-            </div>
-        </div>
-            )
-          }
-          {user ? (
-            <button onClick={handleLogout} className="btn btn-info">Log out</button>
-          ) : (
-            <button className="btn btn-info"><Link to='/login'>Sign In</Link></button>
-          )}
+                <div className="w-12 rounded-full">
+                  <img
+                    src={user.photoURL ? user.photoURL : <span>U</span>}
+                    title={user.displayName}
+                  />
+                </div>
+              </div>
+            )}
+            {user ? (
+              <button onClick={handleLogout} className="btn btn-info">
+                Log out
+              </button>
+            ) : (
+              <button className="btn btn-info">
+                <Link to="/login">Sign In</Link>
+              </button>
+            )}
           </div>
         </div>
       </div>

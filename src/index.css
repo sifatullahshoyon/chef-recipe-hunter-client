@@ -2,24 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-
-.active{
-  @apply font-neue text-blue-600 font-bold uppercase tracking-wide duration-200 text-lg
+.active {
+  @apply font-neue text-blue-600 font-bold uppercase tracking-wide duration-200 text-lg;
 }
 
-.default{
-  @apply font-neue text-white uppercase font-medium tracking-wide duration-200 text-lg
+.default {
+  @apply font-neue text-white uppercase font-medium tracking-wide duration-200 text-lg;
 }
 
-.text-tertiary:hover{
-  background-color: #84100F;
+.text-tertiary:hover {
+  background-color: #84100f;
 }
 
-.text-brown{
-  color: #84100F;
+.text-brown {
+  color: #84100f;
 }
 
-input{
+input {
   background-color: white;
   border-bottom: 1px solid black;
   outline: none;
@@ -29,13 +28,10 @@ input{
   position: relative;
 }
 
-
-.icon{
+.icon {
   color: black;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   right: 10px;
 }
-
-

@@ -7,12 +7,14 @@ import toast from "react-hot-toast";
 import Loading from "../../components/Loading/Loading";
 
 const SingleChefData = () => {
+  const [disable, setDisable] = useState(false);
   const data = useLoaderData();
-  const {state} = useNavigation();
-  if(state === 'loading'){
+
+  const { state } = useNavigation();
+  if (state === "loading") {
     return <Loading />;
   }
-  const [disable, setDisable] = useState(false);
+
   const {
     chefName,
     chefPicture,

@@ -5,8 +5,8 @@ import Loading from "../../components/Loading/Loading";
 
 const Chefes = () => {
   const chefsData = useLoaderData();
-  const {state} = useNavigation();
-  if(state === 'loading'){
+  const { state } = useNavigation();
+  if (state === "loading") {
     return <Loading />;
   }
   return (
