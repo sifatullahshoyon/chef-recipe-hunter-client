@@ -10,6 +10,7 @@ import Registration from "../../components/shared/Registration/Registration";
 import Login from "../../components/shared/Login/Login";
 import SingleChefData from "../../pages/SingleChefData/SingleChefData";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import About from "../../pages/About/About";
 
 
 const router = createBrowserRouter([
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
             {
                 path: '/history',
                 element: <History />,
+            },
+            {
+                path: '/about',
+                element: <About />,
             },
         ]
     },

@@ -5,7 +5,7 @@ const Table = ({ recipe }) => {
   let index = 0;
   return (
     <div>
-      <div>
+      <div className="overflow-x-auto">
         <table className="table rounded">
           {/* head */}
           <thead className="bg-slate-100 text-black text-xl text-center ">
