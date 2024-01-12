@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Table from "../../components/Table/Table";
 import { FcLike } from "react-icons/fc";
 import ReactStarsRating from "react-awesome-stars-rating";
+import toast from "react-hot-toast";
 
 const SingleChefData = () => {
   const data = useLoaderData();
+  const [disable, setDisable] = useState(false);
   const {
     chefName,
     chefPicture,
@@ -17,6 +19,10 @@ const SingleChefData = () => {
     shortBio,
     yearsOfExperience,
   } = data;
+  const handleFavoriteBtn = () => {
+    toast("The Recipe is your favorite 🥰");
+    setDisable(!disable);
+  };
   return (
     <div className="bg-white ">
       <div className="container mx-auto px-10 py-32">
@@ -68,9 +74,22 @@ const SingleChefData = () => {
           </p>
           <ReactStarsRating className="flex" value={rating} />
         </div>
-        <button className="btn btn-wide my-4 text-white bg-indigo-600 border-0 text-lg">
-          Favorite
-        </button>
+        {disable ? (
+          <button
+            onClick={handleFavoriteBtn}
+            disabled
+            className="btn btn-wide my-4 text-white bg-indigo-600 border-0 text-lg"
+          >
+            Favorite
+          </button>
+        ) : (
+          <button
+            onClick={handleFavoriteBtn}
+            className="btn btn-wide my-4 text-white bg-indigo-600 border-0 text-lg"
+          >
+            Favorite
+          </button>
+        )}
       </div>
     </div>
   );
