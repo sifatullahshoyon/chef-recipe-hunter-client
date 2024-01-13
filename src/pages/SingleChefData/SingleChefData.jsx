@@ -42,7 +42,7 @@ const SingleChefData = () => {
             />
           </figure>
         </div>
-        <h2 className="text-black text-xl">
+        <h2 className="text-black text-xl my-3">
           <span className="text-black font-bold">Name: </span>
           {chefName ? chefName : "Data Not Found"}
         </h2>

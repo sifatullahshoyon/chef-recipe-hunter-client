@@ -11,6 +11,7 @@ import Login from "../../components/shared/Login/Login";
 import SingleChefData from "../../pages/SingleChefData/SingleChefData";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import About from "../../pages/About/About";
+import Blog from "../../pages/Blog/Blog";
 
 
 const router = createBrowserRouter([
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
             {
                 path: '/about',
                 element: <About />,
+            },
+            {
+                path: '/blog',
+                element: <Blog />,
             },
         ]
     },
