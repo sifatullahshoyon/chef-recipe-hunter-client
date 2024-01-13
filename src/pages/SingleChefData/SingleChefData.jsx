@@ -5,6 +5,7 @@ import { FcLike } from "react-icons/fc";
 import ReactStarsRating from "react-awesome-stars-rating";
 import toast from "react-hot-toast";
 import Loading from "../../components/Loading/Loading";
+import LazyLoad from "react-lazy-load";
 
 const SingleChefData = () => {
   const [disable, setDisable] = useState(false);
@@ -35,11 +36,13 @@ const SingleChefData = () => {
       <div className="container mx-auto px-10 py-32">
         <div className="mx-auto w-full">
           <figure>
-            <img
-              src={chefPicture ? chefPicture : "Image Not Found"}
-              alt="chefPicture"
-              className="object-cover mx-auto  h-96"
-            />
+            <LazyLoad height={762}>
+              <img
+                src={chefPicture ? chefPicture : "Image Not Found"}
+                alt="chefPicture"
+                className="object-cover mx-auto  h-96"
+              />
+            </LazyLoad>
           </figure>
         </div>
         <h2 className="text-black text-xl my-3">
