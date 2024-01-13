@@ -12,7 +12,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-indigo-600">
+    <nav className="bg-black sticky top-0">
       <div className="navbar  container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
