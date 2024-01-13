@@ -164,14 +164,6 @@ const Registration = () => {
                     )}
                   </div>
                 </div>
-                <label className="label">
-                  <a
-                    href="#"
-                    className="label-text-alt link link-hover text-brown hover:text-brown font-neue"
-                  >
-                    Forgot password?
-                  </a>
-                </label>
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Registration</button>
