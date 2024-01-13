@@ -8,4 +8,4 @@
 * navbar and footer will be visible on all pages
 * all API come to the server side. 
 
-[Live](https://chef-recipe-hunter-clien-65b2d.web.app/)
+[Live](https://chef-recipe-hunter-clien-65b2d.web.app)
